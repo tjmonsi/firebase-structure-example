@@ -1,0 +1,116 @@
+{
+  "app": {
+    "title": "TJ Monserrat's Site",
+    "shortTitle": "tjmonsi's site",
+    "description": "Some of the things that I do on the web I do it here.",
+    "twitter": "@tjmonsi",
+    "image": ""
+  },
+  "build": {
+    "name": "dev",
+    "baseHref": "/",
+    "analytics": "",
+    "firebaseVersion": "4.3.0",
+    "database": "dev",
+    "waitBeforeFetchingSameURLInRest": 60,
+    "sentryUrl": "",
+    "firebaseConfig": []
+  },
+  "fragments": {
+    "landing-page": "src/main-module/pages/landing-page"
+  },
+  "routing": {
+    "/": "landing-page"
+  },
+  "httpCodes": {
+    "not-found": "not-found-page",
+    "not-authorized": "not-authorized-page"
+  },
+  "serviceWorker": {
+    "globIgnores": [],
+    "runtimeCaching": [],
+    "globPatterns": []
+  },
+  "hosting": {
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "function": "app"
+      }
+    ],
+    "headers": [
+      {
+        "source" : "**/*.@(jpg|jpeg|gif|png)",
+        "headers" : [
+          {
+            "key" : "Cache-Control",
+            "value" : "max-age=7200"
+          }
+        ]
+      },
+      {
+        "source" : "404.html",
+        "headers" : [
+          {
+            "key" : "Cache-Control",
+            "value" : "max-age=300"
+          }
+        ]
+      },
+      {
+        "source": "service-worker.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "routing-sw-src.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "routing-sw.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "sw.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "workbox-routing.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      },
+      {
+        "source": "workbox-sw.*.js",
+        "headers" : [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
+      }
+    ]
+  }
+}
